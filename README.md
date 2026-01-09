@@ -5,6 +5,7 @@ A modern, responsive weather forecasting application that provides real-time wea
 ## Features
 
 - 🌍 Search for weather in any city
+- 🔽 Select search dropdowns related to your input
 - 📍 Auto-detects your current location
 - 🌡️ Current weather conditions with feels-like temperature
 - 📅 7-day weather forecast
