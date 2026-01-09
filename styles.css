@@ -159,7 +159,7 @@ header {
         right: 1px;
         max-height: 0;
         overflow: hidden;
-        z-index: 1;
+        z-index: 99;
         padding: 0;
         border: none;
         border-radius: var(--radius-size--small);
