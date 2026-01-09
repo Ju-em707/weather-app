@@ -49,6 +49,7 @@ h1 {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-family: 'DM-Sans';
+        -webkit-tap-highlight-color: transparent;
 }
 
 html {
