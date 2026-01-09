@@ -13,6 +13,25 @@
         flex-direction: column;
     }
 
+    #warning-pop-up.show {
+        top: -3.1rem;
+        left: 1rem;
+        padding: 0.48rem;
+        font-size: 0.85rem;
+
+        &::before {
+            top: 100%;
+            left: 9.12%;
+            border-top: 11px solid var(--clr-border-warning);
+            border-bottom: unset;
+        }
+    }
+
+    .icon-warning {
+        width: 1.3rem;
+        height: auto;
+}
+
     .btn-search {
         font-size: 0.9rem;
         padding: 0.7rem 8.9rem;

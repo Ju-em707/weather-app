@@ -585,7 +585,7 @@ searchInput.addEventListener("input", async (event) => {
         return;
     }
 
-    searchBarPopUpWarning.classList.remove("active");
+    searchBarPopUpWarning.classList.remove("show");
 
     searchTimeout = setTimeout(async () => {
         setSearchingState(true);
@@ -718,6 +718,7 @@ async function searchLocation() {
     if (query === currentLocation.name) return;
     if (query.length < 2) {
         showSearchError("Enter a location.");
+        shakeSearchError();
         return;
     }
 
@@ -747,6 +748,7 @@ async function searchLocation() {
 // Main
 
 async function loadWeatherForCurrentLocation() {
+    dashboard.style.opacity = 1;
     setLoadingState(true);
     dashboard.style.display = "flex";
     noResultsDisplay.style.display = "none";
@@ -865,7 +867,7 @@ function showAPIError(message) {
 
 function showSearchError(message) {
     searchInput.focus();
-    searchBarPopUpWarning.classList.add("active");
+
     searchBarPopUpWarning.innerHTML = `
         <img
             src="assets/images/warning-icon.webp"
@@ -875,10 +877,19 @@ function showSearchError(message) {
         ${message}
     `;
 
+    
+    searchBarPopUpWarning.classList.add("show");
+
     searchInput.scrollIntoView({ 
         behavior: 'smooth', 
         block: 'center' 
     });
+}
+
+function shakeSearchError() {
+    searchBarPopUpWarning.classList.remove("shake");
+    void searchBarPopUpWarning.offsetWidth;
+    searchBarPopUpWarning.classList.add("shake");
 }
 
 function formatDate(dateStr) {
