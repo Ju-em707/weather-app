@@ -51,9 +51,10 @@ npx serve
 
 1. The app automatically detects your location on first load
 2. Use the search bar to find weather for any city
-3. Click the Units dropdown to change temperature, wind speed, or precipitation units
-4. View daily forecast cards for the next 7 days
-5. Select a day in the hourly forecast to see that day's weather by hour
+3. Select relevant locations as you type by clicking or moving "up" and "down" arrows on search dropdowns
+4. Click the Units dropdown to change temperature, wind speed, or precipitation units
+5. View daily forecast cards for the next 7 days
+6. Select a day in the hourly forecast to see that day's weather by hour
 
 ## Project Structure
 
