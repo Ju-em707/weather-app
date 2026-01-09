@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/weather-tab-icon.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <title>Weather app</title>
+  </head>
+  <body>
+    <div id="site-wrapper">
+      <header>
+        <div id="branding">
+          <img
+            src="assets/images/logo.svg"
+            alt="Weather Now logo"
+            class="icon-brand"
+          />
+        </div>
+        <nav>
+          <div class="border-focus--white">
+            <button id="unit-btn" class="btn-toggle js-unit-toggle">
+              <img
+                src="assets/images/icon-units.svg"
+                alt="Gear icon"
+                class="icon-gear"
+              />
+              Units
+              <img
+                src="assets/images/icon-dropdown.svg"
+                alt="Dropdown icon"
+                class="icon-dropdown"
+              />
+            </button>
+            <div class="unit-dropdown">
+              <button id="general-unit-btn" class="dropdown__option btn-toggle">
+                Switch to Imperial
+              </button>
+              <p class="dropdown__label">Temperature</p>
+              <button
+                id="btn-temp__celsius"
+                class="dropdown__option btn-toggle btn-temp"
+              >
+                Celsius (°C)
+                <img
+                  src="assets/images/icon-checkmark.svg"
+                  alt="Checkmark icon"
+                  class="icon-checkmark"
+                />
+              </button>
+              <button
+                id="btn-temp__fahrenheit"
+                class="dropdown__option btn-toggle btn-temp"
+              >
+                Fahrenheit (°F)
+                <img
+                  src="assets/images/icon-checkmark.svg"
+                  alt="Checkmark icon"
+                  class="icon-checkmark"
+                />
+              </button>
+              <div class="separator-line"></div>
+              <p class="dropdown__label">Wind Speed</p>
+              <button
+                id="btn-wind-speed__kmh"
+                class="dropdown__option btn-toggle btn-wind-speed"
+              >
+                km/h
+                <img
+                  src="assets/images/icon-checkmark.svg"
+                  alt="Checkmark icon"
+                  class="icon-checkmark"
+                />
+              </button>
+              <button
+                id="btn-wind-speed__mph"
+                class="dropdown__option btn-toggle btn-wind-speed"
+              >
+                mph
+                <img
+                  src="assets/images/icon-checkmark.svg"
+                  alt="Checkmark icon"
+                  class="icon-checkmark"
+                />
+              </button>
+              <div class="separator-line"></div>
+              <p class="dropdown__label">Precipitation</p>
+              <button
+                id="btn-precipitation__millimeters"
+                class="dropdown__option btn-toggle btn-precipitation"
+              >
+                Millimeters (mm)
+                <img
+                  src="assets/images/icon-checkmark.svg"
+                  alt="Checkmark icon"
+                  class="icon-checkmark"
+                />
+              </button>
+              <button
+                id="btn-precipitation__inches"
+                class="dropdown__option btn-toggle btn-precipitation"
+              >
+                Inches (in)
+                <img
+                  src="assets/images/icon-checkmark.svg"
+                  alt="Checkmark icon"
+                  class="icon-checkmark"
+                />
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div id="api-error-state">
+        <img
+          src="assets/images/icon-error.svg"
+          alt="Error icon"
+          class="icon-error"
+        />
+        <h1 class="title-section__title">Something went wrong</h1>
+        <p class="error-message">
+          We couldn't connect to the server (API error). Please try <br />again
+          in a few moments.
+        </p>
+        <button class="btn-toggle js-retry-button">
+          <img src="assets/images/icon-retry.svg" alt="Retry icon" />
+          Retry
+        </button>
+      </div>
+
+      <main id="main-section">
+        <section id="title-section">
+          <h1 class="title-section__title">How's the sky looking today?</h1>
+        </section>
+        <section id="search-section">
+          <div class="border-focus--white">
+            <div class="input-search">
+              <img
+                src="assets/images/icon-search.svg"
+                alt="Search icon"
+                class="icon-search"
+              />
+              <input
+                type="search"
+                placeholder="Search for a place..."
+                aria-label="Search Location"
+                class="js-search-bar-toggle"
+                id="search-bar"
+                autocomplete="off"
+              />
+            </div>
+
+            <div id="warning-pop-up">
+              <img
+                src="assets/images/warning-icon.webp"
+                alt="Warning icon"
+                class="icon-warning"
+              />
+              Enter a location
+            </div>
+
+            <div class="search-dropdown">
+              <button class="dropdown__option btn-toggle js-city-suggestion">
+                City Name
+              </button>
+              <button class="dropdown__option btn-toggle js-city-suggestion">
+                City Name
+              </button>
+              <button class="dropdown__option btn-toggle js-city-suggestion">
+                City Name
+              </button>
+              <button class="dropdown__option btn-toggle js-city-suggestion">
+                City Name
+              </button>
+            </div>
+          </div>
+          <div class="btn-search__border--lightblue">
+            <button type="submit" class="btn-search">Search</button>
+          </div>
+        </section>
+        <p id="no-results-display">No search result found!</p>
+        <section id="dashboard">
+          <section id="current-weather">
+            <article id="weather-card">
+              <header class="card-info">
+                <h3 id="card-info__location-name">Berlin, Germany</h3>
+                <p id="card-info__current-date">Tuesday, Aug 5, 2025</p>
+              </header>
+              <div id="weather-card--loading-state">
+                <div id="loading-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p id="loading-text">Loading...</p>
+              </div>
+              <div id="weather-main">
+                <img
+                  src="assets/images/icon-sunny.webp"
+                  alt="Weather icon"
+                  class="icon-weather"
+                />
+                <p id="temperature">68°</p>
+              </div>
+            </article>
+            <div id="weather-stats">
+              <article class="stat">
+                <h4 class="stat__name">Feels Like</h4>
+                <p class="stat__value">64°</p>
+              </article>
+              <article class="stat">
+                <h4 class="stat__name">Humidity</h4>
+                <p class="stat__value">46%</p>
+              </article>
+              <article class="stat">
+                <h4 class="stat__name">Wind</h4>
+                <p class="stat__value">9 mph</p>
+              </article>
+              <article class="stat">
+                <h4 class="stat__name">Precipitation</h4>
+                <p class="stat__value">0 in</p>
+              </article>
+            </div>
+            <h4 class="daily-forecast__title">Daily Forecast</h4>
+            <section id="daily-forecast">
+              <article class="day-card">
+                <p class="day">Tue</p>
+                <img
+                  src="assets/images/icon-rain.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">68°</p>
+                  <p class="temp__val">57°</p>
+                </div>
+              </article>
+              <article class="day-card">
+                <p class="day">Wed</p>
+                <img
+                  src="assets/images/icon-drizzle.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">70°</p>
+                  <p class="temp__val">59°</p>
+                </div>
+              </article>
+              <article class="day-card">
+                <p class="day">Thu</p>
+                <img
+                  src="assets/images/icon-sunny.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">75°</p>
+                  <p class="temp__val">57°</p>
+                </div>
+              </article>
+              <article class="day-card">
+                <p class="day">Fri</p>
+                <img
+                  src="assets/images/icon-partly-cloudy.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">77°</p>
+                  <p class="temp__val">55°</p>
+                </div>
+              </article>
+              <article class="day-card">
+                <p class="day">Sat</p>
+                <img
+                  src="assets/images/icon-storm.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">70°</p>
+                  <p class="temp__val">59°</p>
+                </div>
+              </article>
+              <article class="day-card">
+                <p class="day">Sun</p>
+                <img
+                  src="assets/images/icon-snow.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">77°</p>
+                  <p class="temp__val">61°</p>
+                </div>
+              </article>
+              <article class="day-card">
+                <p class="day">Mon</p>
+                <img
+                  src="assets/images/icon-fog.webp"
+                  alt="Rain icon"
+                  class="icon-day"
+                />
+                <div class="temps-container">
+                  <p class="temp__val">75°</p>
+                  <p class="temp__val">59°</p>
+                </div>
+              </article>
+            </section>
+          </section>
+          <aside id="hourly-forecast">
+            <header id="hourly-header">
+              <h4>Hourly forecast</h4>
+              <div class="border-focus--white">
+                <button id="day-toggle" class="btn-toggle js-day-toggle">
+                  Tuesday
+                  <img
+                    src="assets/images/icon-dropdown.svg"
+                    alt="Dropdown-icon"
+                    class="icon-dropdown"
+                  />
+                </button>
+                <div class="day-dropdown">
+                  <button class="dropdown__option btn-toggle">
+                    Monday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                  <button class="dropdown__option btn-toggle">
+                    Tuesday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                  <button class="dropdown__option btn-toggle">
+                    Wednesday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                  <button class="dropdown__option btn-toggle">
+                    Thursday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                  <button class="dropdown__option btn-toggle">
+                    Friday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                  <button class="dropdown__option btn-toggle">
+                    Saturday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                  <button class="dropdown__option btn-toggle">
+                    Sunday
+                    <img
+                      src="assets/images/icon-checkmark.svg"
+                      alt="Checkmark icon"
+                      class="icon-checkmark"
+                    />
+                  </button>
+                </div>
+              </div>
+            </header>
+            <ul id="hourly-list">
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-drizzle.webp"
+                  alt="Drizzle icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">12 AM</span>
+                <span class="temp">60°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-rain.webp"
+                  alt="Rain icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">1 AM</span>
+                <span class="temp">60°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-rain.webp"
+                  alt="Rain icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">2 AM</span>
+                <span class="temp">61°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">3 AM</span>
+                <span class="temp">60°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-snow.webp"
+                  alt="Snowy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">4 AM</span>
+                <span class="temp">59°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-snow.webp"
+                  alt="Snowy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">5 AM</span>
+                <span class="temp">59°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-fog.webp"
+                  alt="Foggy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">6 AM</span>
+                <span class="temp">62°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">7 AM</span>
+                <span class="temp">65°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">8 AM</span>
+                <span class="temp">66°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-sunny.webp"
+                  alt="Sunny icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">9 AM</span>
+                <span class="temp">67°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">10 AM</span>
+                <span class="temp">64°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-sunny.webp"
+                  alt="Sunny icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">11 AM</span>
+                <span class="temp">62°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-partly-cloudy.webp"
+                  alt="Partly-cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">12 PM</span>
+                <span class="temp">63°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-snow.webp"
+                  alt="Snowy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">1 PM</span>
+                <span class="temp">62°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-fog.webp"
+                  alt="Foggy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">2 PM</span>
+                <span class="temp">65°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">3 PM</span>
+                <span class="temp">68°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-partly-cloudy.webp"
+                  alt="Partly-cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">4 PM</span>
+                <span class="temp">68°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-partly-cloudy.webp"
+                  alt="Partly-cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">5 PM</span>
+                <span class="temp">68°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">6 PM</span>
+                <span class="temp">66°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-snow.webp"
+                  alt="Snowy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">7 PM </span>
+                <span class="temp">66°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-fog.webp"
+                  alt="Foggy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">8 PM </span>
+                <span class="temp">64°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-snow.webp"
+                  alt="Snowy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">9 PM </span>
+                <span class="temp">63°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">10 PM </span>
+                <span class="temp">63°</span>
+              </li>
+              <li class="hourly-row">
+                <img
+                  src="assets/images/icon-overcast.webp"
+                  alt="Cloudy icon"
+                  class="icon-hourly"
+                />
+                <span class="hour">11 PM </span>
+                <span class="temp">66°</span>
+              </li>
+            </ul>
+          </aside>
+        </section>
+      </main>
+      <footer>
+        <div class="attribution">
+          <p>Challenge by</p>
+          <a href="https://www.frontendmentor.io?ref=challenge"
+            >Frontend Mentor</a
+          >. Coded by <a href="#">Ju-em Miles Corral</a>.
+        </div>
+        <div class="attribution">
+          <p>Weather data by</p>
+          <a href="https://open-meteo.com/">Open-Meteo</a>
+        </div>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
