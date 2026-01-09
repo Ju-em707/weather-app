@@ -28,4 +28,4 @@ build/
 *.tmp
 .cache/
 
-.bug-fix-test.txt
+bug-fix-test.txt
