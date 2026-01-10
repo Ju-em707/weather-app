@@ -20,7 +20,7 @@ const apiErrorState = document.getElementById("api-error-state");
 async function fetchCurrentLocationData() {
     try {
         // add Access-Control-Allow-Origin header from proxy
-        const response = await fetch('https://corsproxy.io/?url=https://freeipapi.com/api/json');
+        const response = await fetch('api/location.js');
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
