@@ -11,8 +11,8 @@ export default function handler(request) {
     return new Response(
         JSON.stringify({
             ip: ip,
-            city: details.city,
-            country: details.country,
+            city: details.city || "Unknown",
+            country: details.country || "Unknown",
             region: details.region,
             latitude: details.latitude,
             longitude: details.longitude,
