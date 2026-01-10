@@ -1,5 +1,5 @@
 let currentWeatherData = null;
-let currentLocation = { lat: 40.71, lon: 74.00, name: "New York, United States" };
+let currentLocation = { lat: 40.71278, lon: -74.00594, name: "New York, United States" };
 
 let toCelsius = true;
 let toKmh = true;

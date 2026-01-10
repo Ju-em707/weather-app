@@ -13,14 +13,16 @@ export default function handler(request) {
             ip: ip,
             city: details.city || "Unknown",
             country: details.country || "Unknown",
-            region: details.region,
-            latitude: details.latitude,
-            longitude: details.longitude,
-            postalCode: details.postalCode
+            latitude: details.latitude || 0,
+            longitude: details.longitude || 0,
         }),
         {
             status: 200,
-            headers: { 'content-type': 'application/json'},
+            headers: { 'content-type': 'application/json',
+            'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+            'CDN-Cache-Control': 'no-store',
+            'Vercel-CDN-Cache-Control': 'no-store'
+            },
         }
     );
 }
