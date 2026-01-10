@@ -28,7 +28,12 @@ async function fetchCurrentLocationData() {
 
         const data = await response.json();
 
-        return data;
+        return {
+            latitude: data.latitude,
+            longitude: data.longitude,
+            city: data.city || "New York",
+            country: data.country || "United States"
+        };
         
     } catch (error) {
         console.error("Error fetching location:", error);
@@ -37,8 +42,8 @@ async function fetchCurrentLocationData() {
         return {
             latitude: currentLocation.lat,
             longitude: currentLocation.lon,
-            countryName: "United States",
-            cityName: "New York"
+            city: "New York",
+            country: "United States"
         };
     }
 }
@@ -916,7 +921,7 @@ async function initWeatherApp() {
     currentLocation = {
         lat: data.latitude,
         lon: data.longitude,
-        name: `${data.cityName}, ${data.countryName}`
+        name: `${data.city}, ${data.country}`
     };
 
     await loadWeatherForCurrentLocation();

@@ -1,0 +1,24 @@
+{
+  "name": "website-projects",
+  "version": "1.0.0",
+  "description": "A modern, responsive weather forecasting application that provides real-time weather data for any location worldwide.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ju-em707/weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ju-em707/weather-app/issues"
+  },
+  "homepage": "https://github.com/Ju-em707/weather-app#readme",
+  "dependencies": {
+    "@vercel/functions": "^3.3.5"
+  }
+}
