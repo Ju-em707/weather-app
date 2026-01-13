@@ -5,8 +5,17 @@ export const config = {
 };
 
 export default function handler(request) {
-    const details = geolocation(request);
+    let details = geolocation(request);
     const ip = ipAddress(request);
+
+    if (!details.city) {
+        details = {
+            city: "New York",
+            country: "United States",
+            latitude: 40.71278,
+            longitude: -74.00594
+        };
+    }
 
     return new Response(
         JSON.stringify({
