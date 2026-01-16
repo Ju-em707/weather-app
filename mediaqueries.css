@@ -10,13 +10,19 @@
     }
 
     #header-section {
-        position: sticky;
+        position: fixed;
+        width: 93%;
+        height: 69px;
         top: 0;
         transform: translateY(-1px);
         z-index: 50;
         background-color: var(--clr-body);
         padding-bottom: 0.67rem;
         margin-bottom: 1.5rem;
+    }
+
+    #title-section {
+        margin-top: 7rem;
     }
 
     #search-section {
