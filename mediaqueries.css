@@ -2,11 +2,21 @@
 
 @media (max-width: 768px) {
     body {
-        padding: 0 1rem;
+        padding: 0 0.9rem;
     }
 
     header {
         padding-top: 1.25rem;
+    }
+
+    #header-section {
+        position: sticky;
+        top: 0;
+        transform: translateY(-1px);
+        z-index: 50;
+        background-color: var(--clr-body);
+        padding-bottom: 0.67rem;
+        margin-bottom: 1.5rem;
     }
 
     #search-section {
@@ -36,7 +46,10 @@
         font-size: 0.9rem;
         padding: 0.7rem 8.9rem;
     }
-
+    
+    #dashboard {
+        margin: 0 0.3rem;
+    }
     #current-weather {
         margin: 0;
     }
@@ -45,6 +58,9 @@
         background-image: url("assets/images/bg-today-small.svg");
     }
 
+    footer {
+        margin-top: 4rem;
+    }
 }
 
 @media (max-width: 616px) {

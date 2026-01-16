@@ -21,6 +21,7 @@ h1 {
 /* NORMALIZATION */
 
 :root {
+        --clr-body: rgb(0, 5, 40);
         --clr-bg-dark: rgb(35, 35, 59);
         --clr-bg-dark--lighter: 
         rgb(55, 50, 95);
@@ -59,7 +60,7 @@ html {
 body {
         min-height: 100%;
         padding: 0 var(--padding-body-sides);
-        background-color: rgb(0, 5, 40);
+        background-color: var(--clr-body);
 }
 
 #site-wrapper {
@@ -99,6 +100,8 @@ button:hover {
 
 
 /* HEADER */
+
+
 
 header {
         display: flex;
@@ -159,7 +162,7 @@ header {
         right: 1px;
         max-height: 0;
         overflow: hidden;
-        z-index: 99;
+        z-index: 20;
         padding: 0;
         border: none;
         border-radius: var(--radius-size--small);
