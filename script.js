@@ -376,7 +376,7 @@ mmBtn.classList.add("marked");
 
 celsiusBtn.addEventListener("click", () => {
     convertToCelsius();
-    convertTemperature();
+    renderAllWeather(currentWeatherData);
 });
 
 function convertToCelsius() {
@@ -392,7 +392,7 @@ function convertToCelsius() {
 
 fahrenheitBtn.addEventListener("click", () => {
     convertToFahrenheit();
-    convertTemperature();
+    renderAllWeather(currentWeatherData);
 });
 
 function convertToFahrenheit() {
@@ -407,7 +407,7 @@ function convertToFahrenheit() {
 
 kmhBtn.addEventListener("click", () => {
     convertToKmh();
-    convertWindSpeed();
+    updateWindSpeedData();
 });
 
 function convertToKmh() {
@@ -422,7 +422,7 @@ function convertToKmh() {
 
 mphBtn.addEventListener("click", () => {
     convertToMph();
-    convertWindSpeed();
+    updateWindSpeedData();
 });
 
 function convertToMph() {
@@ -437,7 +437,7 @@ function convertToMph() {
 
 mmBtn.addEventListener("click", () => {
     convertToMm();
-    convertPrecipitation();
+    updatePrecipitationData();
 });
 
 function convertToMm() {
@@ -452,7 +452,7 @@ function convertToMm() {
 
 inchesBtn.addEventListener("click", () => {
     convertToInches();
-    convertPrecipitation();
+    updatePrecipitationData();
 });
 
 function convertToInches() {
@@ -466,18 +466,13 @@ function convertToInches() {
 
 
 
-function convertTemperature() {
-
-    renderAllWeather(currentWeatherData);
-}
-
-function convertWindSpeed() {
+function updateWindSpeedData() {
 
     switchGeneralUnitLabel();
     updateCurrentWeather(currentWeatherData);
 }
 
-function convertPrecipitation() {
+function updatePrecipitationData() {
     
     switchGeneralUnitLabel();
     updateCurrentWeather(currentWeatherData);

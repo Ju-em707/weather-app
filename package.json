@@ -4,7 +4,8 @@
   "description": "A modern, responsive weather forecasting application that provides real-time weather data for any location worldwide.",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vercel dev"
   },
   "repository": {
     "type": "git",
