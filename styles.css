@@ -59,7 +59,6 @@ html {
 
 body {
         min-height: 100%;
-        padding: 0 var(--padding-body-sides);
         background-color: var(--clr-body);
 }
 
@@ -67,6 +66,7 @@ body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        padding: 0 var(--padding-body-sides);
 }
 
 img {
