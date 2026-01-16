@@ -70,9 +70,39 @@
     }
 }
 
+@media (max-width: 726px) {
+    .stat {
+        width: 20.5rem;
+    }
+}
+
+@media (max-width: 710px) {
+    .stat {
+        width: 19rem;
+    }
+}
+
+@media (max-width: 662px) {
+    .stat {
+        width: 17rem;
+    }
+}
+
 @media (max-width: 616px) {
     #daily-forecast {
         justify-content: start;
+    }
+}
+
+@media (max-width: 598px) {
+    .stat {
+        width: 15rem;
+    }
+}
+
+@media (max-width: 534px) {
+    .stat {
+        width: 14.5rem;
     }
 }
 
@@ -98,6 +128,42 @@
     }
 }
 
+@media (max-width: 518px) {
+    .stat {
+        width: 14rem;
+    }
+}
+
+@media (max-width: 502px) {
+    .stat {
+        width: 13.5rem;
+    }
+}
+
+@media (max-width: 486px) {
+    .stat {
+        width: 13rem;
+    }
+}
+
+@media (max-width: 470px) {
+    .stat {
+        width: 12.5rem;
+    }
+}
+
+@media (max-width: 454px) {
+    .stat {
+        width: 12rem;
+    }
+}
+
+@media (max-width: 438px) {
+    .stat {
+        width: 11.5rem;
+    }
+}
+
 @media (max-width: 428px) {
     #hourly-forecast {
         padding: 1rem 0.9rem;
@@ -109,22 +175,31 @@
     }
 }
 
-@media (max-width: 384px) {
+@media (max-width: 422px) {
     .stat {
-        width: 9.6rem;
+        width: 11rem;
     }
 }
 
-@media (max-width: 372px) {
-}
-
-@media (max-width: 370px) {
+@media (max-width: 406px) {
     .stat {
-        width: 9.2rem;
+        width: 10.5rem;
     }
 }
 
-@media (max-width: 357px) {
+@media (max-width: 390px) {
+    .stat {
+        width: 10rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .stat {
+        width: 9.5rem;
+    }
+}
+
+@media (max-width: 358px) {
     .stat {
         width: 9rem;
     }
