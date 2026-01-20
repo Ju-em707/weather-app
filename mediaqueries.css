@@ -1,4 +1,20 @@
+@media (max-width: 911px) {
+    .stat {
+        width: 9rem;
+    }
+}
 
+@media (max-width: 847px) {
+    .stat {
+        width: 8rem;
+    }
+}
+
+@media (max-width: 783px) {
+    .stat {
+        width: 7.7rem;
+    }
+}
 
 @media (max-width: 768px) {
     #site-wrapper {
@@ -70,7 +86,7 @@
     }
 }
 
-@media (max-width: 726px) {
+@media (max-width: 768px) {
     .stat {
         width: 19.5rem;
     }
@@ -106,7 +122,7 @@
     }
 }
 
-@media (max-width: 519px) {
+@media (max-width: 522px) {
     #weather-card {
         flex-direction: column;
         align-items: center;
