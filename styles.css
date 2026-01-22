@@ -771,10 +771,8 @@ ul {
         border: 1px solid var(--clr-border-light--blueish);
 }
 
-.hourly-row.hidden {
-        &.hidden > * {
-                visibility: hidden;
-        }
+.hourly-row.hidden *  {
+        visibility: hidden;
 }
 
 .icon-hourly {
