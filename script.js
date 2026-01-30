@@ -19,7 +19,7 @@ const apiErrorState = document.getElementById("api-error-state");
 
 async function fetchCurrentLocationData() {
     try {
-        // add Access-Control-Allow-Origin header from proxy
+        // serverless function, no need proxy
         const response = await fetch('api/location.js');
 
         if (!response.ok) {
