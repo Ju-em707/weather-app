@@ -715,7 +715,6 @@ searchButton.addEventListener("click", async () => {
 async function searchLocation() {
     query = searchInput.value.trim();
 
-    if (query === currentLocation.name) return;
     if (query.length < 2) {
         showSearchError("Enter a location.");
         shakeSearchError();
