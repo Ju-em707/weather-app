@@ -206,7 +206,10 @@ function updateHourlyForecast(data) {
 
     // deal directly with strings to avoid local computer
     // time zone conversion
-    let currentIndex = hourly.time.findIndex(t => t.startsWith(data.current.time.slice(0, 13)));
+    let currentIndex = 0;
+    if (startDayIndex === 0) {
+        currentIndex = hourly.time.findIndex(t => t.startsWith(data.current.time.slice(0, 13)));
+    }
 
     if (startDayIndex > 0) {
         currentIndex = daysIndexIncrement[startDayIndex];
