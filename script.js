@@ -906,8 +906,8 @@ function formatDate(dateStr) {
 }
 
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await initWeatherApp();
+document.addEventListener("DOMContentLoaded", () => {
+    initWeatherApp();
 });
 
 async function initWeatherApp() {
